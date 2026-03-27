@@ -1391,31 +1391,27 @@ class Client extends Backend_Controller{
 						//echo $message;
 					 }
 
-				$resp_kirim = $this->kirim($row->ivts_NoHp,$message,$image);
-				echo $resp_kirim;
+				$resp_kirim = $this->kirim($row->ivts_NoHp,$message,$image ?? null);
 				$obj = json_decode($resp_kirim);
-					//echo $obj->status ;
-					$wa_message= $obj->messages ;
-					 echo $obj->messages ;
-					 echo $obj->data->quota ;
-					// echo $obj->data->message["id"];
-					echo $row->ivts_Name;
-					foreach ($obj->data->messages as $row1) {
-						$wa_id= $row1->id;
-						$wa_phone= $row1->phone;
-						$wa_caption= $row1->caption;
-						$wa_image= $row1->image;
-						$wa_status= $row1->status;
+
+					$wa_id = null;
+					$wa_phone = null;
+					$wa_status = null;
+
+					if(isset($obj->data->messages) && is_array($obj->data->messages)){
+						foreach ($obj->data->messages as $row1) {
+							$wa_id= $row1->id ?? null;
+							$wa_phone= $row1->phone ?? null;
+							$wa_status= $row1->status ?? null;
+						}
 					}
 
-					$nama = $row->ivts_Name;
 					$data = array(
-						//'id' => $id,
 						'inbox_Id'=> $wa_id,
 						'inbox_Name'=> $row->ivts_Name,
 						'inbox_NoHp'=> $wa_phone,
-						'inbox_Messages'=> $wa_caption,
-						'inbox_Image'=> $wa_image,
+						'inbox_Messages'=> $message,
+						'inbox_Image'=> $image ?? null,
 						'inbox_Date'=> date('Y-m-d H:i:s'),
 						'inbox_Status'=> $wa_status,
 						'inbox_Client_Id'=> $id,
@@ -1496,31 +1492,27 @@ class Client extends Backend_Controller{
 						//echo $message;
 					 }
 
-				$resp_kirim = $this->kirim_wa_official($row->ivts_NoHp,$message,$image);
-				echo $resp_kirim;
+				$resp_kirim = $this->kirim_wa_official($row->ivts_NoHp,$message,$image ?? null);
 				$obj = json_decode($resp_kirim);
-					//echo $obj->status ;
-					$wa_message= $obj->messages ;
-					 echo $obj->messages ;
-					 echo $obj->data->quota ;
-					// echo $obj->data->message["id"];
-					echo $row->ivts_Name;
-					foreach ($obj->data->messages as $row1) {
-						$wa_id= $row1->id;
-						$wa_phone= $row1->phone;
-						$wa_caption= $row1->caption;
-						$wa_image= $row1->image;
-						$wa_status= $row1->status;
+
+					$wa_id = null;
+					$wa_phone = null;
+					$wa_status = null;
+
+					if(isset($obj->data->messages) && is_array($obj->data->messages)){
+						foreach ($obj->data->messages as $row1) {
+							$wa_id= $row1->id ?? null;
+							$wa_phone= $row1->phone ?? null;
+							$wa_status= $row1->status ?? null;
+						}
 					}
 
-					$nama = $row->ivts_Name;
 					$data = array(
-						//'id' => $id,
 						'inbox_Id'=> $wa_id,
 						'inbox_Name'=> $row->ivts_Name,
 						'inbox_NoHp'=> $wa_phone,
-						'inbox_Messages'=> $wa_caption,
-						'inbox_Image'=> $wa_image,
+						'inbox_Messages'=> $message,
+						'inbox_Image'=> $image ?? null,
 						'inbox_Date'=> date('Y-m-d H:i:s'),
 						'inbox_Status'=> $wa_status,
 						'inbox_Client_Id'=> $id,
@@ -1534,9 +1526,9 @@ class Client extends Backend_Controller{
 			}
 		}
 
-		//print_r($undangan->result_array());		
+		//print_r($undangan->result_array());
 	}
-	
+
 	public function blast2($id=null,$capt,$ids){
 		//if(isset($_POST['ids']) && !empty($_POST['ids'])){
 			$data = $this->Client_model->findByID($id);
@@ -1600,38 +1592,34 @@ class Client extends Backend_Controller{
 							//echo $message;
 						 }
 	
-					$resp_kirim = $this->kirim($row->ivts_NoHp,$message,$image);
-					echo $resp_kirim;
+					$resp_kirim = $this->kirim($row->ivts_NoHp,$message,$image ?? null);
 					$obj = json_decode($resp_kirim);
-						//echo $obj->status ;
-						$wa_message= $obj->messages ;
-						 echo $obj->messages ;
-						 echo $obj->data->quota ;
-						// echo $obj->data->message["id"];
-						echo $row->ivts_Name;
-						foreach ($obj->data->messages as $row1) {
-							$wa_id= $row1->id;
-							$wa_phone= $row1->phone;
-							$wa_caption= $row1->caption;
-							$wa_image= $row1->image;
-							$wa_status= $row1->status;
+
+						$wa_id = null;
+						$wa_phone = null;
+						$wa_status = null;
+
+						if(isset($obj->data->messages) && is_array($obj->data->messages)){
+							foreach ($obj->data->messages as $row1) {
+								$wa_id= $row1->id ?? null;
+								$wa_phone= $row1->phone ?? null;
+								$wa_status= $row1->status ?? null;
+							}
 						}
-	
-						$nama = $row->ivts_Name;
+
 						$data = array(
-							//'id' => $id,
 							'inbox_Id'=> $wa_id,
 							'inbox_Name'=> $row->ivts_Name,
 							'inbox_NoHp'=> $wa_phone,
-							'inbox_Messages'=> $wa_caption,
-							'inbox_Image'=> $wa_image,
+							'inbox_Messages'=> $message,
+							'inbox_Image'=> $image ?? null,
 							'inbox_Date'=> date('Y-m-d H:i:s'),
 							'inbox_Status'=> $wa_status,
 							'inbox_Client_Id'=> $id,
 							'inbox_ivts_Id'=> $row->ivts_Id,
 							'inbox_Platform'=> 'Whatsapp'
 						);
-	
+
 					$this->db->insert('inbox', $data);
 					$this->db->where('ivts_Id',$row->ivts_Id);
 					$this->db->update('invitations',['ivts_SentTime'=>date('Y-m-d H:i:s'), 'ivts_SentStatus'=>$wa_status ]);
