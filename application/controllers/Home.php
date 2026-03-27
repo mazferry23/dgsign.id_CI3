@@ -292,6 +292,8 @@ class Home extends CI_Controller{
 
         }
 
+        $properties = [];
+
         $propQ = $this->db->get_where('client_properties',['clprop_Client_Id'=>$client_id]);
 
         //echo $this->db->last_query();
@@ -642,15 +644,21 @@ class Home extends CI_Controller{
 
         $propQ = $this->Qrtemplate_model->findFirst(['tplqr_Id'=>$undangan->ivts_tplqr_Id]);
 
+        $properties = [];
 
+        $propQ2 = $this->db->get_where('client_properties',['clprop_Client_Id'=>$client_id]);
+
+        if($propQ2->num_rows()>0){
+            foreach($propQ2->result_array() as $p){
+                $properties[$p['clprop_Field']] = $p['clprop_Value'];
+            }
+        }
 
         $colsQ = $this->db->get_where('template_properties',['tplprop_Tpl_Id'=>$client->client_Tpl_Id]);
 
-        $link_invt = !empty($client->client_CustomDomain) ? $client->client_CustomDomain.'?uuid='.$undangan->ivts_Uuid : site_url('invitations/'.$id.'/'.strtolower(url_title($client->client_Name,'-')).'/'.$undangan->ivts_Uuid);
+        $link_invt = !empty($client->client_CustomDomain) ? $client->client_CustomDomain.'?uuid='.$undangan->ivts_Uuid : site_url('invitations/'.$client_id.'/'.strtolower(url_title($client->client_Name,'-')).'/'.$undangan->ivts_Uuid);
 
-        //print_r($properties);
-
-        //print_r($colsQ->result_array());
+        $data_view = [];
 
         foreach($colsQ->result_array() as $col){
 
@@ -1140,15 +1148,21 @@ class Home extends CI_Controller{
 
         $propQ = $this->Qrtemplate_model->findFirst(['tplqr_Id'=>$undangan->ivts_tplivts_Id]);
 
+        $properties = [];
 
+        $propQ2 = $this->db->get_where('client_properties',['clprop_Client_Id'=>$client_id]);
+
+        if($propQ2->num_rows()>0){
+            foreach($propQ2->result_array() as $p){
+                $properties[$p['clprop_Field']] = $p['clprop_Value'];
+            }
+        }
 
         $colsQ = $this->db->get_where('template_properties',['tplprop_Tpl_Id'=>$client->client_Tpl_Id]);
 
-        $link_invt = !empty($client->client_CustomDomain) ? $client->client_CustomDomain.'?uuid='.$undangan->ivts_Uuid : site_url('invitations/'.$id.'/'.strtolower(url_title($client->client_Name,'-')).'/'.$undangan->ivts_Uuid);
+        $link_invt = !empty($client->client_CustomDomain) ? $client->client_CustomDomain.'?uuid='.$undangan->ivts_Uuid : site_url('invitations/'.$client_id.'/'.strtolower(url_title($client->client_Name,'-')).'/'.$undangan->ivts_Uuid);
 
-        //print_r($properties);
-
-        //print_r($colsQ->result_array());
+        $data_view = [];
 
         foreach($colsQ->result_array() as $col){
 
