@@ -496,7 +496,7 @@ switch (ENVIRONMENT)
 
 // 	define('WABLAS_URL','https://solo.wablas.com');
 
-define('WABLAS_KEY','NPjwYN20tPqomqtIkBUhXsFa5JhunG8hkwEMVfayloYLCWhMZo1moTfxEEtbdfd6.F5Bwhiz1');
+define('WABLAS_KEY','NPjwYN20tPqomqtIkBUhXsFa5JhunG8hkwEMVfayloYLCWhMZo1moTfxEEtbdfd6.D9AYkz3D');
 
  	define('WABLAS_URL','https://pati.wablas.com');
 

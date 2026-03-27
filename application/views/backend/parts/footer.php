@@ -35,6 +35,7 @@
 
     <!--common script for all pages-->
     <script src="<?=base_url('public/backend/')?>js/common-scripts.js"></script>
+    <script src="<?=base_url('public/backend/')?>js/jquery.validate.min.js"></script>
     <?php
     if(isset($scripts)){
       $this->load->view('backend/'.$scripts);
