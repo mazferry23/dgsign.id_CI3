@@ -1,0 +1,20 @@
+<IfModule mod_rewrite.c>
+Header set Access-Control-Allow-Origin "*"
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+php_value post_max_size 900M
+php_value upload_max_filesize 900M
+php_value memory_limit 900M
+php_value max_execution_time 259200
+php_value max_input_time 259200
+php_value session.gc_maxlifetime 1200
+
+SecFilterEngine Off
+SecFilterScanPOST Off
+# END WordPress

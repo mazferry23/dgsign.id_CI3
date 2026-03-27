@@ -1,0 +1,30 @@
+<div class="row">
+	<div class="col-md-12">
+		<section class="card">
+			<header class="card-header">
+				List Client
+			</header>
+			<div class="card-body">
+				<div style="margin-top:10px;margin-bottom: 10px;">
+					<a href="<?=site_url()?>backend/client/create" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Create</a>
+				</div>
+				<div class="table-responsive-sm">
+					<table class="display table table-bordered table-striped" id="topic_table_list">
+						<thead>
+							<tr>
+								<td>No</td>
+								<td>Nama</td>
+								<td>Alamat</td>
+								<td>Tamu</td>
+								<td>Datang</td>
+								<td>Souvenir</td>
+								<td>Pulang</td>
+								<td>Action</td>
+							</tr>
+						</thead>
+					</table>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>

@@ -1,0 +1,1 @@
+<strong>Blank page is loaded.</strong>

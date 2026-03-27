@@ -1,0 +1,73 @@
+# Vendor (install via composer)
+/vendor/
+
+# System old backup
+/system_old/
+
+# Upload directories (user generated content)
+/excel/*.xlsx
+/excel/*.xls
+/public/invitation_qr/*
+!/public/invitation_qr/.gitkeep
+/public/invitation_ivt/*
+!/public/invitation_ivt/.gitkeep
+/public/uploads/*
+!/public/uploads/.gitkeep
+/public/qrcodes/*
+!/public/qrcodes/.gitkeep
+/public/wa_tmp/*
+!/public/wa_tmp/.gitkeep
+/public/captpl/*
+!/public/captpl/.gitkeep
+/public/ivttemplate/*
+!/public/ivttemplate/.gitkeep
+/public/qrtemplate/*
+!/public/qrtemplate/.gitkeep
+/public/wi_template/*
+!/public/wi_template/.gitkeep
+
+# Cache
+application/cache/*.dat
+application/cache/mask_*/
+
+# Environment & sensitive files
+application/config/database.php
+.env
+php.ini
+.ftpquota
+
+# Logs
+application/logs/*.log
+error_log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.claude/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Hosting error pages
+*.shtml
+acgi-bin/
+cgi-bin/
+dcgi-bin/
+cp_errordocument.shtml
+
+# Old/backup controller files
+application/controllers/backend/Client odl.php
+application/controllers/backend/Client_old.php
+application/controllers/backend/Client(14june2022).php
+application/controllers/backend/Client(20.06.2024).php
+application/controllers/backend/Client(with Button).php
+application/controllers/Home(15-04-2022).php
+application/controllers/Home_old.php
+
+# PHPExcel (replaced by PhpSpreadsheet)
+application/third_party/PHPExcel/

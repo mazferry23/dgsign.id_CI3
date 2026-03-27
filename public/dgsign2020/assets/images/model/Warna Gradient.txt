@@ -1,0 +1,8 @@
+Gradient:
+	ffdde2 Pink
+	ffecef Pink Muda
+Font:
+	Jenis:
+		1. Dancing Script
+		2. Verdana
+	Warna 5c434d
