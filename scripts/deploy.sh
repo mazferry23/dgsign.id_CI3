@@ -2,8 +2,11 @@
 # Deploy script for portaldev.dgsign.id
 # Usage: ssh user@host 'bash -s' < scripts/deploy.sh
 
-DEPLOY_DIR="/home/u1507004/portaldev.dgsign.id"
 BRANCH="main"
+
+# Auto detect: production or staging
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+DEPLOY_DIR="$(dirname "$SCRIPT_DIR")"
 
 echo "========================================="
 echo "  Deploy portal.dgsign.id"
