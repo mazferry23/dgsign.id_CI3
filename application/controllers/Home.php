@@ -100,8 +100,6 @@ class Home extends CI_Controller{
             $qrCode->writeFile(FCPATH.'public'.DS.'qrcodes' .DS.$insert['ivts_Uuid'].'.png');
             $qr = imagecreatefrompng(FCPATH.'public'.DS.'qrcodes'.DS.$insert['ivts_Uuid'].'.png');
         //}
-        header('Content-type: image/png');
-        imagejpeg($qr);
         redirect($referer);
         }else{
             //$insert['rsvp_Ivts_Id'] = $this->input->post('ivtsId');
@@ -213,8 +211,6 @@ class Home extends CI_Controller{
             $qrCode->writeFile(FCPATH.'public'.DS.'qrcodes' .DS.$insert['ivts_Uuid'].'.png');
             $qr = imagecreatefrompng(FCPATH.'public'.DS.'qrcodes'.DS.$insert['ivts_Uuid'].'.png');
         //}
-        header('Content-type: image/png');
-        imagejpeg($qr);
         redirect($referer);
 
         }else{
